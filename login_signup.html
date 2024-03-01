@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h1 class="title">Sign Up</h1>
+            <div class="underline"></div>
+
+            <form action="#">
+                <div class="input-group">
+                    <div class="input-field  namefield">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" name="" id="" placeholder="Name">
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-at"></i>
+                        <input type="email" name="" id="" placeholder="Email">
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-key"></i>
+                        <input type="password" name="" id="" placeholder="Password">
+                    </div>
+                    <p ><span class="text">To Know More </span><a href=""> Click Here</a></p>
+                </div>                
+                    <div class="btn-field">
+                    <button type="button" class="signupbtn">Sign up</button>
+                    <button type="button" class="disable signinbtn">Sign in</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        let signup=document.querySelector('.signupbtn')
+        let signin=document.querySelector('.signinbtn')
+        let name=document.querySelector('.namefield')
+        let title=document.querySelector('.title')
+        let underline=document.querySelector('.underline')
+        let text=document.querySelector('.text')
+        signin.addEventListener('click',()=>{
+            name.style.maxHeight='0';
+            title.innerHTML='Sign In';
+            text.innerHTML='Forgot Password'
+            signup.classList.add('disable');
+            signin.classList.remove('disable');
+            underline.style.transform='translateX(35px)';
+            
+        });
+        signup.addEventListener('click',()=>{
+            name.style.maxHeight='60px';
+            title.innerHTML='Sign Up';
+            signin.classList.add('disable');
+            signup.classList.remove('disable');
+            underline.style.transform='translateX(0)';
+            
+        });
+    </script>
+</body>
+</html>
