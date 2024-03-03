@@ -20,43 +20,57 @@ let signin = document.querySelector(".signinbtn");
 let name = document.querySelector(".namefield");
 let title = document.querySelector(".title");
 let underline = document.querySelector(".underline");
-let text = document.querySelector(".text");
-signin.addEventListener("click", () => {
-    name.style.maxHeight = "0";
-    title.innerHTML = "Sign In";
-    // text.innerHTML = "Forgot Password";
-    signup.classList.add("disable");
-    signin.classList.remove("disable");
-    underline.style.transform = "translateX(35px)";
-});
+let text = document.getElementById("text");
 signup.addEventListener("click", () => {
     name.style.maxHeight = "60px";   
     title.innerHTML = "Sign Up";
+    text.innerHTML = "To Know More ";
     signin.classList.add("disable");
     signup.classList.remove("disable");
     underline.style.transform = "translateX(0)";
+});
+signin.addEventListener("click", () => {
+    name.style.maxHeight = "0";
+    title.innerHTML = "Sign In";
+    text.innerHTML = "Forgot Password";
+    signup.classList.add("disable");
+    signin.classList.remove("disable");
+    underline.style.transform = "translateX(35px)";
 });
 
 document.addEventListener("DOMContentLoaded", () => {
     // Function to store user data in local storage permanently
     function storeUserDataPermanently(name, email, password) {
-        let userData = {
+        let userData = getPermanentUserData();
+        userData.push({
             name: name,
             email: email,
             password: password
-        };
+        });
         localStorage.setItem('permanentUserData', JSON.stringify(userData));
     }
 
     // Function to retrieve permanently stored user data from local storage
     function getPermanentUserData() {
-        return JSON.parse(localStorage.getItem('permanentUserData'));
+        let userDataString = localStorage.getItem('permanentUserData');
+        let userData = userDataString ? JSON.parse(userDataString) : [];
+        if (!Array.isArray(userData)) {
+            console.error("Stored user data is not an array. Resetting to an empty array.");
+            userData = [];
+        }
+        return userData;
+    }
+
+    // Function to check if the provided email already exists in the stored user data
+    function emailExists(email) {
+        let userData = getPermanentUserData();
+        return userData.some(user => user.email === email);
     }
 
     // Function to check if the provided email and password match with permanently stored user data
     function login(email, password) {
         let userData = getPermanentUserData();
-        return userData && userData.email === email && userData.password === password;
+        return userData.some(user => user.email === email && user.password === password);
     }
 
     let authForm = document.getElementById("authForm");
@@ -78,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         } else {
             // Sign-up logic
-            if (getPermanentUserData() && getPermanentUserData().email === email) {
+            if (emailExists(email)) {
                 alert("User already exists. Please sign in.");
             } else {
                 storeUserDataPermanently(name, email, password);
