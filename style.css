@@ -223,7 +223,7 @@ body {
 
 #product1 .pro-container {
   display: flex;
-  justify-content: center;
+  justify-content:  space-between;
   padding-top: 20px;
   flex-wrap: wrap;
 }
@@ -808,8 +808,20 @@ footer .copyright {
     background-position: top 30% right 30%;
   }
 
+  #feature{
+    justify-content: center;
+  }
+
   #feature .fe-box {
     margin: 15px 15px;
+  }
+
+  #product1 .pro-container{
+    justify-content: center;
+  }
+
+  #product1 .pro{
+    margin: 20px;
   }
 
   #banner {
@@ -839,9 +851,6 @@ footer .copyright {
   .section-p1{
     padding: 20px;
   }
-    #header{
-      padding: 10px 30px;
-    }
     h1{
       font-size: 38px;
     }
@@ -853,12 +862,11 @@ footer .copyright {
       background-position: 60%;
     }
     #feature {
-      justify-content: center;
+      justify-content: space-between;
     }
     #feature .fe-box {
       width: 155px;
       margin:0 0 15px 0;
-      justify-content: space-between;
   }
 
   #product1 .pro{
