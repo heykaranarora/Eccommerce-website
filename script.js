@@ -15,13 +15,14 @@ if (close) {
 }
 
 //login
+document.addEventListener("DOMContentLoaded", () => {
 let signup = document.querySelector(".signupbtn");
 let signin = document.querySelector(".signinbtn");
 let name = document.querySelector(".namefield");
 let title = document.querySelector(".title");
 let underline = document.querySelector(".underline");
 let text = document.getElementById("text");
-signup.addEventListener("click", () => {
+signup.addEventListener('click', () => {
     name.style.maxHeight = "60px";   
     title.innerHTML = "Sign Up";
     text.innerHTML = "To Know More ";
@@ -38,7 +39,6 @@ signin.addEventListener("click", () => {
     underline.style.transform = "translateX(35px)";
 });
 
-document.addEventListener("DOMContentLoaded", () => {
     // Function to store user data in local storage permanently
     function storeUserDataPermanently(name, email, password) {
         let userData = getPermanentUserData();

@@ -181,7 +181,7 @@ body {
 #feature {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 #feature .fe-box:hover {
@@ -853,7 +853,7 @@ footer .copyright {
       background-position: 60%;
     }
     #feature {
-      justify-content: space-between;
+      justify-content: center;
     }
     #feature .fe-box {
       width: 155px;
