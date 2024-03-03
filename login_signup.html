@@ -5,31 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
 </head>
 <body>
+
+    <section id="header">
+        <a href="#"><img src="/img/logo.png" class="logo" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <li><a  href="index.html">Home</a></li>
+                <li><a href="shop.html">Shops</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contacts</a></li>
+                <li><a class="active" href="login_signup.html">Login/signup</a></li>
+                <li><a id="lg-bag" href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
+                <a href="#" id="close"><i class="far fa-times"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html"><i class="far fa-shopping-bag"></i></a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+
     <div class="container">
         <div class="form-box">
             <h1 class="title">Sign Up</h1>
             <div class="underline"></div>
-
-            <form action="#">
+    
+            <form id="authForm" action="#">
                 <div class="input-group">
                     <div class="input-field  namefield">
                         <i class="fa-solid fa-user"></i>
-                        <input type="text" name="" id="" placeholder="Name">
+                        <input type="text" id="name" placeholder="Name">
                     </div>
                     <div class="input-field">
                         <i class="fa-solid fa-at"></i>
-                        <input type="email" name="" id="" placeholder="Email">
+                        <input type="email" id="email" placeholder="Email">
                     </div>
                     <div class="input-field">
                         <i class="fa-solid fa-key"></i>
-                        <input type="password" name="" id="" placeholder="Password">
+                        <input type="password" id="password" placeholder="Password">
                     </div>
-                    <p ><span class="text">To Know More </span><a href=""> Click Here</a></p>
-                </div>                
-                    <div class="btn-field">
+                    <p><span class="text">To Know More </span><a href="">Click Here</a></p>
+                </div>
+                <div>
+                    <button class="sub-btn">Submit</button>
+                </div>
+                <div class="btn-field">
                     <button type="button" class="signupbtn">Sign up</button>
                     <button type="button" class="disable signinbtn">Sign in</button>
                 </div>
@@ -37,31 +63,59 @@
         </div>
     </div>
 
+    
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="img/logo.png" alt="" srcset="">
+            <h4>contact</h4>
+            <p><strong>Address:</strong> Lorem ipsum dolor sit amet.</p>
+            <p><strong>Phone:</strong>(+91)5168942491</p>
+            <p><strong>Hours:</strong>10:00 - 18:00 ,Mon -Sat</p>
+            <div class="follow">
+                <h4>Follow US</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
 
-    <script>
-        let signup=document.querySelector('.signupbtn')
-        let signin=document.querySelector('.signinbtn')
-        let name=document.querySelector('.namefield')
-        let title=document.querySelector('.title')
-        let underline=document.querySelector('.underline')
-        let text=document.querySelector('.text')
-        signin.addEventListener('click',()=>{
-            name.style.maxHeight='0';
-            title.innerHTML='Sign In';
-            text.innerHTML='Forgot Password'
-            signup.classList.add('disable');
-            signin.classList.remove('disable');
-            underline.style.transform='translateX(35px)';
-            
-        });
-        signup.addEventListener('click',()=>{
-            name.style.maxHeight='60px';
-            title.innerHTML='Sign Up';
-            signin.classList.add('disable');
-            signup.classList.remove('disable');
-            underline.style.transform='translateX(0)';
-            
-        });
-    </script>
+
+        <div class="col">
+            <h4>
+                <h4>About</h4>
+                <a href="#">About us</a>
+                <a href="#">Delivery IMformation</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Term & condition</a>
+                <a href="#">Contact US</a>
+        </div>
+
+        <div class="col">
+                <h4>My Account</h4>
+                <a href="#">Sign In</a>
+                <a href="#">View Car</a>
+                <a href="#">My wishlist</a>
+                <a href="#">Track My Order</a>
+                <a href="#">Help</a>
+        </div>
+
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="img/pay/app.jpg" alt="" srcset="">
+                <img src="img/pay/play.jpg" alt="" srcset="">
+                <p>Secured Payment Gateways</p>
+                <img src="img/pay/pay.png" alt="" srcset="">
+            </div>
+        </div>
+        <div class="copyright">
+            <p>	&copy; 2024 cara,All right reserved</p>
+        </div>
+    </footer>
+    <script src="script.js"> </script>
 </body>
 </html>

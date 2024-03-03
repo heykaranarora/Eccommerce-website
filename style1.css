@@ -8,7 +8,7 @@
 
 .container {
   background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("/img/pexels-pixabay-325876.jpg");
-  height: 100vh;
+  height: 90vh;
   width: 100%;
   background-size: cover;
   background-position: center;
@@ -76,6 +76,16 @@ form p a{
     color:#088178;
 }
 
+.sub-btn{
+  margin-bottom:25px ;
+  border: 0;
+  outline: 0;
+  background-color: #088178;
+  height: 40px;
+  border-radius: 40px;
+  padding: 10px 20px;
+}
+
 .btn-field{
     width: 100%;
     display: flex;
@@ -95,7 +105,7 @@ form p a{
 }
 
 .input-group{
-    min-height: 280px;
+    min-height: 250px;
 }
 
 button.disable {
@@ -104,12 +114,6 @@ button.disable {
 }
 
 
-
-
-
-/* Add this CSS at the end of your existing CSS */
-
-/* Adjustments for smaller screens */
 @media screen and (max-width: 768px) {
     .form-box {
       width: 80%;

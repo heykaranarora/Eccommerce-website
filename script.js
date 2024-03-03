@@ -1,16 +1,105 @@
-const bar=document.getElementById('bar');
-const nav=document.getElementById('navbar');
-const close=document.getElementById('close')
+const bar = document.getElementById("bar");
+const nav = document.getElementById("navbar");
+const close = document.getElementById("close");
 
-if(bar){
-    bar.addEventListener('click',()=>{
-        nav.classList.add('active');
-    })
+if (bar) {
+    bar.addEventListener("click", () => {
+        nav.classList.add("active");
+    });
 }
 
-if(close){
-    close.addEventListener('click',()=>{
-        nav.classList.remove('active');
-    })
+if (close) {
+    close.addEventListener("click", () => {
+        nav.classList.remove("active");
+    });
 }
 
+//login
+let signup = document.querySelector(".signupbtn");
+let signin = document.querySelector(".signinbtn");
+let name = document.querySelector(".namefield");
+let title = document.querySelector(".title");
+let underline = document.querySelector(".underline");
+let text = document.querySelector(".text");
+signin.addEventListener("click", () => {
+    name.style.maxHeight = "0";
+    title.innerHTML = "Sign In";
+    // text.innerHTML = "Forgot Password";
+    signup.classList.add("disable");
+    signin.classList.remove("disable");
+    underline.style.transform = "translateX(35px)";
+});
+signup.addEventListener("click", () => {
+    name.style.maxHeight = "60px";   
+    title.innerHTML = "Sign Up";
+    signin.classList.add("disable");
+    signup.classList.remove("disable");
+    underline.style.transform = "translateX(0)";
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Function to store user data in local storage permanently
+    function storeUserDataPermanently(name, email, password) {
+        let userData = {
+            name: name,
+            email: email,
+            password: password
+        };
+        localStorage.setItem('permanentUserData', JSON.stringify(userData));
+    }
+
+    // Function to retrieve permanently stored user data from local storage
+    function getPermanentUserData() {
+        return JSON.parse(localStorage.getItem('permanentUserData'));
+    }
+
+    // Function to check if the provided email and password match with permanently stored user data
+    function login(email, password) {
+        let userData = getPermanentUserData();
+        return userData && userData.email === email && userData.password === password;
+    }
+
+    let authForm = document.getElementById("authForm");
+
+    authForm.addEventListener("submit", (event) => {
+        event.preventDefault(); // Prevent form submission from refreshing the page
+
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+
+        if (authForm.classList.contains("signin")) {
+            // Sign-in logic
+            if (login(email, password)) {
+                alert("Sign in successful!");
+                window.location.href = "index.html";
+            } else {
+                alert("Invalid email or password. Please try again.");
+            }
+        } else {
+            // Sign-up logic
+            if (getPermanentUserData() && getPermanentUserData().email === email) {
+                alert("User already exists. Please sign in.");
+            } else {
+                storeUserDataPermanently(name, email, password);
+                alert("Sign up successful!");
+                window.location.href = "index.html";
+            }
+        }
+    });
+
+    let signupbtn = document.querySelector(".signupbtn");
+    let signinbtn = document.querySelector(".signinbtn");
+
+    signupbtn.addEventListener("click", () => {
+        authForm.classList.remove("signin");
+        authForm.classList.add("signup");
+        document.querySelector(".title").textContent = "Sign Up";
+    });
+
+    signinbtn.addEventListener("click", () => {
+        authForm.classList.remove("signup");
+        authForm.classList.add("signin");
+        document.querySelector(".title").textContent = "Sign In";
+    });
+});
