@@ -117,3 +117,38 @@ signin.addEventListener("click", () => {
         document.querySelector(".title").textContent = "Sign In";
     });
 });
+
+
+// search bar
+document.addEventListener('DOMContentLoaded', function () {
+    var input = document.getElementById("search-input");
+    var button = document.getElementById("search-button");
+
+    button.addEventListener("click", function () {
+        search();
+    });
+
+    input.addEventListener("input", function () {
+        search();
+    });
+
+    function search() {
+        var searchTerm = input.value.trim(); // Trim whitespace from the input
+        var products = document.querySelectorAll('.pro h5');
+
+        if (searchTerm !== "") {
+            products.forEach(function(product) {
+                var productName = product.innerText.toLowerCase();
+                if (productName.includes(searchTerm.toLowerCase())) {
+                    product.closest('.pro').style.display = "block";
+                } else {
+                    product.closest('.pro').style.display = "none";
+                }
+            });
+        } else {
+            products.forEach(function(product) {
+                product.closest('.pro').style.display = "block";
+            });
+        }
+    }
+});
