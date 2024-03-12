@@ -39,7 +39,7 @@ signin.addEventListener("click", () => {
     underline.style.transform = "translateX(35px)";
 });
 
-    // Function to store user data in local storage permanently
+    // signup data in loclal storage
     function storeUserDataPermanently(name, email, password) {
         let userData = getPermanentUserData();
         userData.push({
@@ -76,7 +76,7 @@ signin.addEventListener("click", () => {
     let authForm = document.getElementById("authForm");
 
     authForm.addEventListener("submit", (event) => {
-        event.preventDefault(); // Prevent form submission from refreshing the page
+        event.preventDefault();
 
         let name = document.getElementById("name").value;
         let email = document.getElementById("email").value;
@@ -357,7 +357,6 @@ const appliedFilters = {
 document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', function() {
         const filter = this.dataset.filter;
-        
         // Check the type of filter
         if (filter === 'name') {
             sortByName();
