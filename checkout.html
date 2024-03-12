@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout Form</title>
+<link rel="stylesheet" href="style.css">
+<style>
+
+#checkout{
+  background-color: rgba(43, 38, 38, 0.078);
+}
+.container {
+display: flex;
+ max-width: 500px;
+ margin-left: 25px;
+ flex-direction: column;
+
+}
+
+#place{
+  width: 30%;
+  margin: 15px auto 15px auto;
+  padding: 10px 10px;
+}
+h2{
+  font-size: 25px;
+  text-align: center;
+
+}
+input,
+textarea {
+  background: #dddddd;
+  width: 100%;
+  padding: 15px 15px;
+  margin: 10px 15px;
+  border-radius: 12px;
+  font-size: 15px;
+  border: 0;
+  outline: 0;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+  .container {
+    max-width: 100%;
+    margin: 0;
+    padding: 10px;
+  }
+}
+
+</style>
+</head>
+<body>
+  <section id="header">
+    <a href="#"><img src="/img/logo.png" class="logo" alt=""></a>
+    <div>
+        <ul id="navbar">
+            <li><a class="active" href="index.html">Home</a></li>
+            <li><a href="shop.html">Shops</a></li>
+            <!-- <li><a href="blog.html">Blog</a></li> -->
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contacts</a></li>
+            <li><a href="login_signup.html">Login/signup</a></li>
+            <!-- <li><a id="lg-bag" href="#"><i class="far fa-shopping-bag"></i></a></li> -->
+            <a href="#" id="close"><i class="far fa-times"></i></a>
+        </ul>
+    </div>
+    <div id="mobile">
+        <!-- <a href="cart.html"><i class="far fa-shopping-bag"></i></a> -->
+        <i id="bar" class="fas fa-outdent"></i>
+    </div>
+</section>
+
+<section id="checkout">
+
+  <div class="container">
+    <h2>Checkout Form</h2>
+    <form id="checkoutForm">
+      
+      <input type="text" id="fullName" name="fullName" required  placeholder="Name:">
+      
+      <input type="email" id="email" name="email" required placeholder="Email">
+      
+      
+      <input type="tel" id="phoneNumber" name="phoneNumber" required placeholder="Phone Number">
+      
+      <input type="text" id="pincode" name="pincode" required placeholder="Pincode">
+      
+      <input type="text" id="city" name="city" required placeholder="City">
+      
+      <input type="text" id="state" name="state" required placeholder="State">
+      
+      <textarea id="address" name="address" required placeholder="Address"></textarea>
+      
+    </form>
+    <button type="submit" id="place">Place Order</button>
+  </div>
+</section>
+  
+<footer class="section-p1">
+  <div class="col">
+      <img class="logo" src="img/logo.png" alt="" srcset="">
+      <h4>contact</h4>
+      <p><strong>Address:</strong> Lorem ipsum dolor sit amet.</p>
+      <p><strong>Phone:</strong>(+91)5168942491</p>
+      <p><strong>Hours:</strong>10:00 - 18:00 ,Mon -Sat</p>
+      <div class="follow">
+          <h4>Follow US</h4>
+          <div class="icon">
+              <i class="fab fa-facebook-f"></i>
+              <i class="fab fa-twitter"></i>
+              <i class="fab fa-instagram"></i>
+              <i class="fab fa-youtube"></i>
+          </div>
+      </div>
+  </div>
+
+
+  <div class="col">
+      <h4>
+          <h4>About</h4>
+          <a href="about.html">About us</a>
+          <a href="#">Delivery IMformation</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Term & condition</a>
+          <a href="contact.html">Contact US</a>
+  </div>
+
+  <div class="col">
+          <h4>My Account</h4>
+          <a href="login_signup.html">Sign In</a>
+
+          <a href="#">My wishlist</a>
+          <a href="#">Track My Order</a>
+          <a href="#" id="whatsappBtn">Help</a>
+  </div>
+
+  <div class="col install">
+      <h4>Install App</h4>
+      <p>From App Store or Google Play</p>
+      <div class="row">
+          <img src="img/pay/app.jpg" alt="" srcset="">
+          <img src="img/pay/play.jpg" alt="" srcset="">
+          <p>Secured Payment Gateways</p>
+          <img src="img/pay/pay.png" alt="" srcset="">
+      </div>
+  </div>
+  <div class="copyright">
+      <p>	&copy; 2024 cara,All right reserved</p>
+  </div>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('checkoutForm');
+  const phoneNumberInput = document.getElementById('phoneNumber');
+
+  // Function to validate phone number input
+  function validatePhoneNumber() {
+    const phoneNumberValue = phoneNumberInput.value.replace(/\D/g, ''); // Remove non-numeric characters
+    const validPhoneNumber = phoneNumberValue.length === 10; // Check if length is 10 digits
+    if (!validPhoneNumber) {
+      phoneNumberInput.setCustomValidity('Please enter a 10-digit phone number.');
+    } else {
+      phoneNumberInput.setCustomValidity('');
+    }
+  }
+
+  // Add event listener to phone number input
+  phoneNumberInput.addEventListener('input', validatePhoneNumber);
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const fullName = document.getElementById('fullName').value;
+    const email = document.getElementById('email').value;
+    const phoneNumber = document.getElementById('phoneNumber').value;
+    const pincode = document.getElementById('pincode').value;
+    const city = document.getElementById('city').value;
+    const state = document.getElementById('state').value;
+    const address = document.getElementById('address').value;
+
+    // Simple form authentication
+    if (fullName && email && phoneNumber && pincode && city && state && address) {
+      const orderData = {
+        fullName: fullName,
+        email: email,
+        phoneNumber: phoneNumber,
+        pincode: pincode,
+        city: city,
+        state: state,
+        address: address
+      };
+
+      // Storing data in local storage
+      localStorage.setItem('order', JSON.stringify(orderData));
+
+      // Redirect to home.html
+      window.location.href = 'index.html';
+    } else {
+      alert('Please fill in all fields.');
+    }
+  });
+});
+
+
+</script>
+</body>
+</html>

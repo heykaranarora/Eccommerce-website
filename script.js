@@ -92,7 +92,12 @@ signin.addEventListener("click", () => {
             }
         } else {
             // Sign-up logic
-            if (emailExists(email)) {
+            if (name === "" ) {
+                alert("Please Enter Your Name");
+            }else if (password === "") {
+                alert("Please enter your password.");
+            }
+            else if (emailExists(email)) {
                 alert("User already exists. Please sign in.");
             } else {
                 storeUserDataPermanently(name, email, password);
@@ -133,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function search() {
-        var searchTerm = input.value.trim(); // Trim whitespace from the input
+        var searchTerm = input.value.trim();
         var products = document.querySelectorAll('.pro h5');
 
         if (searchTerm !== "") {
@@ -173,7 +178,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-
     document.addEventListener('click', function(event) {
         if (event.target.classList.contains('add-to-cart-btn')) {
             addToCart(event.target);
@@ -206,11 +210,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function toggleCartVisibility() {
         if (cart.style.display === 'block') {
-            cart.style.display = 'none'; // Close the cart only if it's open
+            cart.style.display = 'none'; 
         } else {
-            cart.style.display = 'block'; // Open the cart if it's closed
+            cart.style.display = 'block';
         }
     }
+
     function addToCart(button) {
         const product = button.closest('.pro');
         const productName = product.querySelector('.des h5').innerText;
@@ -233,9 +238,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     <p>$${productPrice.toFixed(2)}</p>
                 </div>
                 <div class="quantity-controls">
-                    <button class="quantity-decrease">-</button>
+                    <button class="quantity-decrease"><</button>
                     <span class="quantity">1</span>
-                    <button class="quantity-increase">+</button>
+                    <button class="quantity-increase">></button>
                 </div>
                 <i class="fas fa-trash remove-btn"></i>
                 
@@ -251,7 +256,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const quantityElement = button.parentElement.querySelector('.quantity');
         const newQuantity = parseInt(quantityElement.innerText) + 1;
         quantityElement.innerText = newQuantity;
-
         updateCartTotal();
         updateLocalStorage();
     }
@@ -298,18 +302,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-    function toggleActiveState(btn) {
-        const isActive = btn.classList.contains('active-filter');
-        document.querySelectorAll('.filter-btn').forEach(filterBtn => {
-            filterBtn.classList.remove('active-filter');
-        });
-        if (!isActive) {
-            btn.classList.add('active-filter');
-        }
-    }
     
     
-       // Function to sort products by name
+// Function to sort products by name
 function sortByName() {
     const productContainers = document.querySelectorAll('.pro');
     const sortedProducts = Array.from(productContainers).sort((a, b) => {
@@ -318,7 +313,7 @@ function sortByName() {
         return nameA.localeCompare(nameB);
     });
     const parent = document.querySelector('#product1');
-    parent.innerHTML = ''; // Clear existing products
+    parent.innerHTML = '';
     sortedProducts.forEach(product => {
         parent.appendChild(product);
     });
@@ -333,7 +328,7 @@ function sortByPrice() {
         return priceA - priceB;
     });
     const parent = document.querySelector('#product1');
-    parent.innerHTML = ''; // Clear existing products
+    parent.innerHTML = '';
     sortedProducts.forEach(product => {
         parent.appendChild(product);
     });
@@ -345,45 +340,112 @@ function filterByCategory(category) {
     productContainers.forEach(container => {
         const productCategory = container.classList.contains(category);
         if (!productCategory) {
-            container.style.display = 'none'; // Hide products not in the selected category
+            container.style.display = 'none';
         } else {
-            container.style.display = ''; // Show products in the selected category
+            container.style.display = '';
         }
     });
 }
+const appliedFilters = {
+    name: false,
+    price: false,
+    men: false,
+    tshirts: false
+};
 
 // Add event listeners to filter buttons
 document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', function() {
         const filter = this.dataset.filter;
+        
+        // Check the type of filter
         if (filter === 'name') {
             sortByName();
         } else if (filter === 'price') {
             sortByPrice();
         } else {
-            // Toggle filter if already applied
+            // Toggle filter
             const isApplied = this.classList.contains('applied');
             if (isApplied) {
-                // Remove filter
                 this.classList.remove('applied');
-                if (filter === 'men' || filter === 'women') {
-                    // Show all products when removing category filter
-                    const productContainers = document.querySelectorAll('.pro');
-                    productContainers.forEach(container => {
-                        container.style.display = '';
-                    });
-                }
             } else {
-                // Apply filter
                 this.classList.add('applied');
-                if (filter === 'men' || filter === 'women') {
-                    filterByCategory(filter === 'men' ? 'm' : 'w');
-                }
             }
+            filterByCategory(filter === 'shirts' ? 'shirt' : 'w');
         }
-        
+
+        // Toggle applied class for the clicked button
+        if (filter !== 'name' && filter !== 'price') {
+            this.classList.toggle('applied');
+        }
     });
 });
 
     
 });
+
+
+
+
+// slider
+let slideIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+
+function showSlide(index) {
+  slides.forEach((slide) => {
+    slide.style.display = 'none';
+  });
+  dots.forEach((dot) => {
+    dot.classList.remove('act');
+  });
+  slides[index].style.display = 'block';
+  dots[index].classList.add('act');
+}
+
+function nextSlide() {
+  slideIndex++;
+  if (slideIndex >= slides.length) {
+    slideIndex = 0;
+  }
+  showSlide(slideIndex);
+}
+
+function prevSlide() {
+  slideIndex--;
+  if (slideIndex < 0) {
+    slideIndex = slides.length - 1;
+  }
+  showSlide(slideIndex);
+}
+
+function currentSlide(index) {
+  slideIndex = index;
+  showSlide(slideIndex);
+}
+
+document.querySelector('.next').addEventListener('click', nextSlide);
+document.querySelector('.prev').addEventListener('click', prevSlide);
+
+dots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    currentSlide(index);
+  });
+});
+
+function autoSlide() {
+  nextSlide();
+}
+setInterval(autoSlide, 3000);
+
+// whatsapp redirection
+
+document.getElementById('whatsappBtn').addEventListener('click', function() {
+    var whatsappNumber = '8168430617';
+    var predefinedMessage = 'Hello, I have a query.';
+    var whatsappUrl = 'https://api.whatsapp.com/send?phone=' + whatsappNumber;
+    if (predefinedMessage) {
+      whatsappUrl += '&text=' + encodeURIComponent(predefinedMessage);
+    }
+    window.location.href = whatsappUrl;
+  });
