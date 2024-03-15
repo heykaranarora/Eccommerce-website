@@ -10,15 +10,12 @@
 <body>
     
     <section id="header">
-        <a href="#"><img src="/img/logo.png" class="logo" alt=""></a>
         <div>
             <ul id="navbar">
                 <li><a  href="index.html">Home</a></li>
                 <li><a  href="shop.html">Shops</a></li>
-                <!-- <li><a  href="blog.html">Blog</a></li> -->
                 <li><a  href="about.html">About</a></li>
                 <li><a class="active" href="contact.html">Contacts</a></li>
-                <!-- <li><a id="lg-bag" ><i class="far fa-shopping-bag"></i></a></li> -->
                 <a href="#" id="close"><i class="far fa-times"></i></a>
             </ul>
         </div>
@@ -79,21 +76,23 @@
     
 
     <section id="form-details" class="section-p1">
-        <form action="https://formsubmit.co/karanarora16072004@gmail.com" method="POST">
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="6085d4fc-1104-4869-851d-b827240af5aa">
             <span>LEAVE A MESSAGE</span>
             <h2>WE love to hear from you</h2>
-            <input type="text" placeholder="Your Name">
-            <input type="email" placeholder="E-mail">
-            <input type="text" placeholder="Subject">
+            <input type="text" placeholder="Your Name" name="name">
+            <input type="email" placeholder="E-mail" name="email">
+            <input type="text" placeholder="Subject" name="subject">
             <textarea name="
-            " id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+            " id="" cols="30" rows="10" placeholder="Your Message" name="message"></textarea>
+            <input type="hidden" name="redirect" value="https://web3forms.com/success">
             <button class="normal">Submit</button>
         </form>
     </section>
 
     <footer class="section-p1">
         <div class="col">
-            <img class="logo" src="img/logo.png" alt="" srcset="">
+
             <h4>contact</h4>
             <p><strong>Address:</strong> Lorem ipsum dolor sit amet.</p>
             <p><strong>Phone:</strong>(+91)5168942491</p>

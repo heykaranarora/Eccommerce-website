@@ -39,7 +39,7 @@ signin.addEventListener("click", () => {
     underline.style.transform = "translateX(35px)";
 });
 
-    // signup data in loclal storage
+    // signup data in local storage
     function storeUserDataPermanently(name, email, password) {
         let userData = getPermanentUserData();
         userData.push({
@@ -238,9 +238,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     <p>$${productPrice.toFixed(2)}</p>
                 </div>
                 <div class="quantity-controls">
-                    <button class="quantity-decrease"><</button>
+                    <button class="quantity-decrease">+</button>
                     <span class="quantity">1</span>
-                    <button class="quantity-increase">></button>
+                    <button class="quantity-increase">-</button>
                 </div>
                 <i class="fas fa-trash remove-btn"></i>
                 
@@ -448,3 +448,4 @@ document.getElementById('whatsappBtn').addEventListener('click', function() {
     }
     window.location.href = whatsappUrl;
   });
+
