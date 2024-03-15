@@ -92,7 +92,7 @@ signin.addEventListener("click", () => {
             }
         } else {
             // Sign-up logic
-            if (name === "" ) {
+            if (name === " " ) {
                 alert("Please Enter Your Name");
             }else if (password === "") {
                 alert("Please enter your password.");
@@ -238,9 +238,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     <p>$${productPrice.toFixed(2)}</p>
                 </div>
                 <div class="quantity-controls">
-                    <button class="quantity-decrease">+</button>
+                    <button class="quantity-decrease">-</button>
                     <span class="quantity">1</span>
-                    <button class="quantity-increase">-</button>
+                    <button class="quantity-increase">+</button>
                 </div>
                 <i class="fas fa-trash remove-btn"></i>
                 
